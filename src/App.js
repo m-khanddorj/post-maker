@@ -4,10 +4,12 @@ import {
   Row,
   Col,
 } from 'react-bootstrap';
+import htmlToImage from 'html-to-image';
 
 import background from './images/backgrounds/1.png';
 import Inputs from './components/Inputs';
 import Post from './components/Post'
+import './index.css'
 
 
 class App extends React.Component{
@@ -21,6 +23,7 @@ class App extends React.Component{
       font: 'Oswald',
       x: 0,
       y: 0,
+      type: '0'
     },
     // background states
     background:{
@@ -62,6 +65,25 @@ class App extends React.Component{
     }
     
   }
+
+  download = ()=>{
+    var node = document.getElementById('post');
+ 
+    htmlToImage.toPng(node)
+      .then(function (dataUrl) {
+        var img = new Image();
+        img.src = dataUrl;
+        
+        var link = document.createElement('a');
+        link.download = "post.png";
+        link.href = dataUrl;
+        link.click();
+      })
+      .catch(function (error) {
+        console.error('oops, something went wrong!', error);
+      });
+  }
+
   render(){
     return(<Container fluid>
       <Row>
@@ -70,13 +92,14 @@ class App extends React.Component{
             text = {this.state.text}
             background = {this.state.background}
             handleChange = {this.handleChange}
+            download = {this.download}
           />
         </Col>
         <Col sm = {9}>
-          <Post
-            text = {this.state.text}
-            background = {this.state.background}
-          />
+        <Post
+    text = {this.state.text}
+    background = {this.state.background}
+  />
         </Col>
       </Row>
     </Container>

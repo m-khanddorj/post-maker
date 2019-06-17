@@ -1,10 +1,10 @@
 import React from 'react';
 import {
-  Form,
+  Form, Button,
 } from 'react-bootstrap';
 
 const Inputs = (props)=>{
-    const {handleChange,text,background} = props;
+    const {handleChange,text,background,download} = props;
 
     return(<Form>
         <h3>Бичвэр</h3>
@@ -20,6 +20,7 @@ const Inputs = (props)=>{
                 <option value = 'Oswald' > Oswald </option>
                 <option value = 'Comfortaa' > Comfortaa </option>
                 <option value = 'Lobster' > Lobster </option>
+                <option value = 'LobsterTwo' > Lobster II </option>
                 <option value = 'Philosopher' > Philosopher </option>
             </Form.Control>
             </Form.Label>
@@ -44,14 +45,31 @@ const Inputs = (props)=>{
         <Form.Control onChange = {handleChange} type = 'file' accept = '.jpg, .png, .jpeg, .webp' name = 'background.img' />
 
         <Form.Label>
-                Зургийн байрлал:
+            Зургийн байрлал:
+        </Form.Label>
+        <Form.Group>
+            <Form.Label>x: </Form.Label> 
+            <Form.Control onChange = {handleChange} type = 'number' name = 'background.x' value = {background.x}/>
+            <Form.Label>y: </Form.Label> 
+            <Form.Control onChange = {handleChange} type = 'number' name = 'background.y' value = {background.y}/>
+        </Form.Group>
+
+        <Form.Group>
+            <Form.Label>
+                Зургийн төрөл:
             </Form.Label>
-            <Form.Group>
-                <Form.Label>x: </Form.Label> 
-                <Form.Control onChange = {handleChange} type = 'number' name = 'background.x' value = {background.x}/>
-                <Form.Label>y: </Form.Label> 
-                <Form.Control onChange = {handleChange} type = 'number' name = 'background.y' value = {background.y}/>
-            </Form.Group>
+            <Form.Control as = 'select' name = 'text.type' onChange = {handleChange}>
+                <option value = '0'>Өргөнд тааруулах</option>
+                <option value = '1'>Уртад тааруулах</option>
+            </Form.Control>
+        </Form.Group>
+
+        <Form.Group>
+            <Button onClick = {download}>
+                Татах
+            </Button>
+        </Form.Group>
+
     </Form>)
 }
 
