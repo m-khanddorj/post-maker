@@ -38,7 +38,7 @@ const Post = (props)=>{
         <div
             style = {{
                 zIndex: 99,
-                color: 'white',
+                color: text.color,
                 position: 'absolute',
                 top: text.y + 'px',
                 left: text.x + 'px',

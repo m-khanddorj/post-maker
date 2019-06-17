@@ -23,7 +23,8 @@ class App extends React.Component{
       font: 'Oswald',
       x: 0,
       y: 0,
-      type: '0'
+      type: '0',
+      color: '#ffffff'
     },
     // background states
     background:{

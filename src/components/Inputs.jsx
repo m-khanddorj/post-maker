@@ -31,14 +31,18 @@ const Inputs = (props)=>{
             </Form.Label>
 
             <Form.Label>
+                Бичвэрийн өнгө:
+            <Form.Control onChange = {handleChange} name = 'text.color' type = 'color' value = {text.color}/>
+            </Form.Label>
+            <br/>
+            <Form.Label>
                 Бичвэрийн байрлал:
             </Form.Label>
-            <Form.Group>
-                <Form.Label>x: </Form.Label> 
-                <Form.Control onChange = {handleChange} type = 'number' name = 'text.x' value = {text.x}/>
-                <Form.Label>y: </Form.Label> 
-                <Form.Control onChange = {handleChange} type = 'number' name = 'text.y' value = {text.y}/>
-            </Form.Group>
+            <br/>
+            <Form.Label>x: </Form.Label> 
+            <Form.Control onChange = {handleChange} type = 'number' name = 'text.x' value = {text.x}/>
+            <Form.Label>y: </Form.Label> 
+            <Form.Control onChange = {handleChange} type = 'number' name = 'text.y' value = {text.y}/>
         </Form.Group>
 
         <h3>Зураг</h3>
