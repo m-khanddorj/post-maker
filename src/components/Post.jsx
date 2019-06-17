@@ -43,6 +43,7 @@ const Post = (props)=>{
                 top: text.y + 'px',
                 left: text.x + 'px',
                 fontSize: text.size + 'px',
+                whiteSpace: 'pre-line',
             }}
 
             className = {fontDict[text.font]}
