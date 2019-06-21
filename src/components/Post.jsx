@@ -22,35 +22,41 @@ const Post = (props)=>{
         }
     }
 
-    return(<div style = {{position: 'relative',overflow: 'hidden',width:800,height:800}} id = 'post'> 
+    return(
+        <div>
+            <div style = {{position: 'relative',overflow: 'hidden',width:800,height:800,display: 'inline-block'}} id = 'post'> 
+                <img 
+                    src = {background.img} 
+                    {...typeDict[text.type]} 
+                    style = {{
+                        position: 'absolute',
+                        top: background.y + 'px',
+                        left: background.x + 'px',
 
-        <img 
-            src = {background.img} 
-            {...typeDict[text.type]} 
-            style = {{
-                position: 'absolute',
-                top: background.y + 'px',
-                left: background.x + 'px',
+                    }} 
+                />
+                <img src = {border} width = '700' style = {{position: 'absolute',margin:50,marginBottom:0}} />
+                <div
+                    style = {{
+                        zIndex: 99,
+                        color: text.color,
+                        position: 'absolute',
+                        top: text.y + 'px',
+                        left: text.x + 'px',
+                        fontSize: text.size + 'px',
+                        whiteSpace: 'pre-line',
+                    }}
 
-            }} 
-        />
-        <img src = {border} width = '700' style = {{position: 'absolute',margin:50,marginBottom:0}} />
-        <div
-            style = {{
-                zIndex: 99,
-                color: text.color,
-                position: 'absolute',
-                top: text.y + 'px',
-                left: text.x + 'px',
-                fontSize: text.size + 'px',
-                whiteSpace: 'pre-line',
-            }}
+                    className = {fontDict[text.font]}
+                >
+                {text.content}
+                </div>
+            </div>
+            <div style = {{position: 'relative',display: 'inline-block',overflow: 'hidden',width:10,height:800}}>
 
-            className = {fontDict[text.font]}
-        >
-        {text.content}
-    </div>
-    </div>)
+            </div>
+        </div>
+    )
 }
 
 export default Post;

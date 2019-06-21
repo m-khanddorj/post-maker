@@ -4,12 +4,12 @@ import {
   Row,
   Col,
 } from 'react-bootstrap';
-import htmlToImage from 'html-to-image';
 
 import background from './images/backgrounds/1.png';
 import Inputs from './components/Inputs';
 import Post from './components/Post'
 import './index.css'
+import html2canvas from 'html2canvas';
 
 
 class App extends React.Component{
@@ -70,8 +70,9 @@ class App extends React.Component{
   download = ()=>{
     var node = document.getElementById('post');
  
-    htmlToImage.toPng(node)
-      .then(function (dataUrl) {
+    html2canvas(node)
+      .then(function (canvas) {
+        const dataUrl = canvas.toDataURL();
         var img = new Image();
         img.src = dataUrl;
         
