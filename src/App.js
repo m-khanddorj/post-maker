@@ -8,8 +8,8 @@ import {
 import background from './images/backgrounds/1.png';
 import Inputs from './components/Inputs';
 import Post from './components/Post'
-import './index.css'
-import html2canvas from 'html2canvas';
+import './index.css';
+import htmlToImage from 'html-to-image';
 
 
 class App extends React.Component{
@@ -21,6 +21,8 @@ class App extends React.Component{
       content:'',
       size: 20,
       font: 'Oswald',
+      backgroundColor: '#000000',
+      backgroundOpacity: 125,
       x: 0,
       y: 0,
       type: '0',
@@ -68,28 +70,40 @@ class App extends React.Component{
   }
 
   download = ()=>{
-    var node = document.getElementById('post');
+    var node = document.querySelector('#post');
+    htmlToImage.toPng(node)
+    .then(function (dataUrl) {
+      // var img = new Image();
+      // img.src = dataUrl;
+      // console.log(dataUrl);
+      // document.body.appendChild(img);
+      var link = document.createElement('a');
+      link.download = "post.png";
+      link.href = dataUrl;
+      link.click();
+      
+    })
+    .catch(function (error) {
+      console.error('oops, something went wrong!', error);
+    });
  
-    html2canvas(node)
-      .then(function (canvas) {
-        const dataUrl = canvas.toDataURL();
-        var img = new Image();
-        img.src = dataUrl;
-        
-        var link = document.createElement('a');
-        link.download = "post.png";
-        link.href = dataUrl;
-        link.click();
-      })
-      .catch(function (error) {
-        console.error('oops, something went wrong!', error);
-      });
+    // html2canvas(node)
+    //   .then(function (canvas) {
+    //     var w = window.open("");
+    //     w.document.body.appendChild(canvas);
+    //     // const dataUrl = canvas.toDataURL();
+    //     // var img = new Image();
+    //     // img.src = dataUrl;
+    //   })
+    //   .catch(function (error) {
+    //     console.error('oops, something went wrong!', error);
+    //   });
   }
 
   render(){
     return(<Container fluid>
       <Row>
-        <Col sm = {3}>
+        <Col>
           <Inputs 
             text = {this.state.text}
             background = {this.state.background}
@@ -97,11 +111,13 @@ class App extends React.Component{
             download = {this.download}
           />
         </Col>
-        <Col sm = {9}>
-        <Post
-    text = {this.state.text}
-    background = {this.state.background}
-  />
+        <Col>
+          <div className = 'whatever'>
+            <Post
+              text = {this.state.text}
+              background = {this.state.background}
+            />
+          </div>
         </Col>
       </Row>
     </Container>

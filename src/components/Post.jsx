@@ -23,8 +23,8 @@ const Post = (props)=>{
     }
 
     return(
-        <div>
             <div style = {{position: 'relative',overflow: 'hidden',width:800,height:800,display: 'inline-block'}} id = 'post'> 
+                {/* Background image */}
                 <img 
                     src = {background.img} 
                     {...typeDict[text.type]} 
@@ -32,10 +32,12 @@ const Post = (props)=>{
                         position: 'absolute',
                         top: background.y + 'px',
                         left: background.x + 'px',
-
                     }} 
+                    alt = 'Please select a img'
                 />
-                <img src = {border} width = '700' style = {{position: 'absolute',margin:50,marginBottom:0}} />
+                {/* Border */}
+                <img src = {border} width = '700' style = {{position: 'absolute',margin:50,marginBottom:0}} alt = '' />
+                {/* text */}
                 <div
                     style = {{
                         zIndex: 99,
@@ -45,6 +47,9 @@ const Post = (props)=>{
                         left: text.x + 'px',
                         fontSize: text.size + 'px',
                         whiteSpace: 'pre-line',
+
+                        padding: '10px',
+                        background: text.backgroundColor + parseInt(text.backgroundOpacity).toString(16),
                     }}
 
                     className = {fontDict[text.font]}
@@ -52,10 +57,6 @@ const Post = (props)=>{
                 {text.content}
                 </div>
             </div>
-            <div style = {{position: 'relative',display: 'inline-block',overflow: 'hidden',width:10,height:800}}>
-
-            </div>
-        </div>
     )
 }
 

@@ -27,13 +27,31 @@ const Inputs = (props)=>{
 
             <Form.Label>
                 Бичвэрийн хэмжээ:
-            <Form.Control onChange = {handleChange} name = 'text.size' type = 'number' value = {text.size}/>
+                <Form.Control onChange = {handleChange} name = 'text.size' type = 'number' value = {text.size}/>
             </Form.Label>
 
             <Form.Label>
                 Бичвэрийн өнгө:
-            <Form.Control onChange = {handleChange} name = 'text.color' type = 'color' value = {text.color}/>
+                <Form.Control onChange = {handleChange} name = 'text.color' type = 'color' value = {text.color}/>
             </Form.Label>
+
+            <Form.Label>
+                Суурь өнгө:
+                <Form.Control onChange = {handleChange} name = 'text.backgroundColor' type = 'color' value = {text.backgroundColor}/>
+            </Form.Label>
+
+            <Form.Label>
+                Суурь үзэгдэц:
+                <Form.Control 
+                    onChange = {handleChange} 
+                    name = 'text.backgroundOpacity' 
+                    type = 'number' 
+                    value = {text.backgroundOpacity}
+                    min = {0}
+                    max = {255}
+                />
+            </Form.Label>
+
             <br/>
             <Form.Label>
                 Бичвэрийн байрлал:
