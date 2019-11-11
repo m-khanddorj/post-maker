@@ -9,7 +9,7 @@ import background from './images/backgrounds/1.png';
 import Inputs from './components/Inputs';
 import Post from './components/Post'
 import './index.css';
-import htmlToImage from 'html-to-image';
+import html2canvas from 'html2canvas';  
 
 
 class App extends React.Component{
@@ -70,36 +70,20 @@ class App extends React.Component{
   }
 
   download = ()=>{
-    var node = document.querySelector('#post');
-    htmlToImage.toPng(node)
-    .then(function (dataUrl) {
-      // var img = new Image();
-      // img.src = dataUrl;
-      // console.log(dataUrl);
-      // document.body.appendChild(img);
-      var link = document.createElement('a');
-      link.download = "post.png";
-      link.href = dataUrl;
-      link.click();
-      
-    })
-    .catch(function (error) {
-      console.error('oops, something went wrong!', error);
-    });
- 
-    // html2canvas(node)
-    //   .then(function (canvas) {
-    //     var w = window.open("");
-    //     w.document.body.appendChild(canvas);
-    //     // const dataUrl = canvas.toDataURL();
-    //     // var img = new Image();
-    //     // img.src = dataUrl;
-    //   })
-    //   .catch(function (error) {
-    //     console.error('oops, something went wrong!', error);
-    //   });
-  }
 
+      var node = document.querySelector('#post');
+      html2canvas(node)
+      .then(function (canvas) {
+        var w = window.open("");
+        w.document.body.appendChild(canvas);
+        // const dataUrl = canvas.toDataURL();
+        // var img = new Image();
+        // img.src = dataUrl;
+      })
+      .catch(function (error) {
+        console.error('oops, something went wrong!', error);
+      });
+    }
   render(){
     return(<Container fluid>
       <Row>

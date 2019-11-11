@@ -3,13 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@csstools/normalize.css": "^10.1.0",
+    "canvas2image": "^1.0.5",
     "component-image": "^2.1.1",
-    "gh-pages": "^2.0.1",
+    "gh-pages": "^2.1.1",
     "html-to-image": "^0.1.1",
-    "html2canvas": "^1.0.0-rc.3",
-    "react": "^16.8.6",
-    "react-bootstrap": "^1.0.0-beta.9",
-    "react-dom": "^16.8.6",
+    "html2canvas": "^1.0.0-rc.5",
+    "react": "^16.11.0",
+    "react-bootstrap": "^1.0.0-beta.14",
+    "react-dom": "^16.11.0",
     "react-scripts": "3.0.1"
   },
   "scripts": {
