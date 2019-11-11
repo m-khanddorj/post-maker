@@ -72,9 +72,12 @@ class App extends React.Component{
   download = ()=>{
 
       var node = document.querySelector('#post');
-      html2canvas(node)
+      html2canvas(node,{
+        scale: 2
+      })
       .then(function (canvas) {
         var w = window.open("");
+        canvas.removeAttribute("style")
         w.document.body.appendChild(canvas);
         // const dataUrl = canvas.toDataURL();
         // var img = new Image();
@@ -96,7 +99,7 @@ class App extends React.Component{
           />
         </Col>
         <Col>
-          <div className = 'whatever'>
+          <div className = 'whatever' style = {{position: "absolute", bottom:0}}>
             <Post
               text = {this.state.text}
               background = {this.state.background}
