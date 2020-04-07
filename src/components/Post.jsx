@@ -23,7 +23,7 @@ const Post = (props)=>{
     }
 
     return(
-            <div style = {{position: 'relative',overflow: 'hidden',width:800,height:800,display: 'inline-block', transform: 'scale(0.5, 0.5)'}} id = 'post' > 
+            <div style = {{position: 'relative',overflow: 'hidden',width:800,height:800,display: 'inline-block'}} id = 'post' > 
                 {/* Background image */}
                 <img 
                     src = {background.img} 
